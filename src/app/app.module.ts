@@ -5,17 +5,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { FooComponent } from './foo/foo.component';
+import { LogsListComponent } from './logs-list/logs-list.component';
 
 const appRoutes: Routes = [
   {
-    path: 'foos',
-    component: FooComponent,
-    data: { title: 'Foo list' }
+    path: 'logs',
+    component: LogsListComponent,
+    data: { title: 'Logs list' }
   },
   {
     path: '',
-    redirectTo: '/foos',
+    redirectTo: '/logs',
     pathMatch: 'full'
   }
 ]
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FooComponent
+    LogsListComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

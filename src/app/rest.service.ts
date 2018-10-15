@@ -22,9 +22,13 @@ export class RestService {
     return body || { };
   }
 
-  getFoos(): Observable<any> {
-    return this.http.get(endpoint + 'foos').pipe(
+  getLogs(): Observable<any> {
+    return this.http.get(endpoint + 'logs').pipe(
       map(this.extractData));
+  }
+
+  clearLogs(): Observable<any> {
+    return this.http.delete(endpoint + 'logs').pipe();
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

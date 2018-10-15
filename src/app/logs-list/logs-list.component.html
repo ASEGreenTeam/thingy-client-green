@@ -1,0 +1,18 @@
+<a href="javascript:void(0)" (click)="clearLogs()">
+  <button>Clear logs from database</button>
+</a>
+
+<h1>Log List</h1>
+
+<table>
+ <tr>
+   <th>ID</th>
+   <th>Time</th>
+   <th>Direction</th>
+ </tr>
+ <tr *ngFor="let log of logs;">
+   <td>{{log.id}}</td>
+   <td>{{log.createdAt}}</td>
+   <td>{{log.direction}}</td>
+ </tr>
+</table>
