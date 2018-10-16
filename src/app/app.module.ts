@@ -1,35 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { LogsListComponent } from './logs-list/logs-list.component';
 
-const appRoutes: Routes = [
-  {
-    path: 'logs',
-    component: LogsListComponent,
-    data: { title: 'Logs list' }
-  },
-  {
-    path: '',
-    redirectTo: '/logs',
-    pathMatch: 'full'
-  }
-]
+import { CoreModule } from './core/core.module';
+import { LayoutModule } from './layout/layout.module';
+import { SharedModule } from './shared/shared.module';
+import { RoutesModule } from './routes/routes.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LogsListComponent,
+    AppComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
     FormsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule,
+    LayoutModule,
+    SharedModule.forRoot(),
+    RoutesModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
