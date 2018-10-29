@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { map, catchError, tap, retry } from 'rxjs/operators';
+import { Log } from './shared/models/log.model';
 
 const endpoint = 'http://localhost:3000/';
 const httpOptions = {
@@ -17,33 +18,28 @@ export class RestService {
 
   constructor(private http: HttpClient) { }
 
-  private extractData(res: Response) {
-    let body = res;
-    return body || { };
+  getLogs(): Observable<Log[]> {
+    return this.http.get<Log[]>(endpoint + 'logs').pipe(
+      retry(3),
+      map(this.inspectData),
+      catchError(this.handleError)
+    );
   }
 
-  getLogs(): Observable<any> {
-    return this.http.get(endpoint + 'logs').pipe(
-      map(this.extractData));
+  private inspectData(data) {
+    console.log(data);
+    return data;
   }
 
   clearLogs(): Observable<any> {
     return this.http.delete(endpoint + 'logs').pipe();
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  private handleError(error: HttpErrorResponse) {
+    // return an observable with a user-facing error message
+    console.error(error);
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+    return throwError(
+      'Request failed');
   }
-
-
 }
