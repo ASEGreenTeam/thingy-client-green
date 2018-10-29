@@ -18,7 +18,7 @@ export class LogsListComponent implements OnInit {
     this.getLogs();
     this.interval = setInterval(() => {
         this.getLogs();
-    }, 1000);
+    }, 5000);
   }
 
   getLogs() {

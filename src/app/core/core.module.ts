@@ -1,7 +1,9 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { SettingsService } from './settings/settings.service';
+import { AuthService } from './auth/auth.service';
 import { MenuService } from './menu/menu.service';
+import { AuthGuard } from './auth/auth.guard';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
@@ -9,8 +11,10 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
     imports: [
     ],
     providers: [
-        SettingsService,
-        MenuService
+      AuthGuard,
+      SettingsService,
+      AuthService,
+      MenuService
     ],
     declarations: [
     ],
