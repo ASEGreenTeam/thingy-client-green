@@ -1,4 +1,5 @@
 import { LayoutComponent } from '../layout/layout.component';
+import { AuthGuard } from '../core/auth/auth.guard';
 
 import { LoginComponent } from './pages/login/login.component';
 import { Error404Component } from './pages/error404/error404.component';
@@ -12,7 +13,8 @@ export const routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'logs', loadChildren: './logs/logs.module#LogsModule' }
-        ]
+        ],
+        canActivate: [AuthGuard]
     },
 
     // Not lazy-loaded routes
