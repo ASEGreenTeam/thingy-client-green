@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
     }
 
     submitForm($ev, value: any) {
+        console.log('Entry submit');
         $ev.preventDefault();
         for (let c in this.valForm.controls) {
             this.valForm.controls[c].markAsTouched();

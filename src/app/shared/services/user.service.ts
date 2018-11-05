@@ -22,7 +22,7 @@ export class UserService {
     return this.http.post<any>(endpoint + 'register', user, httpOptions).pipe(
       map(this.inspectData),
       catchError(this.handleError)
-    )
+    );
   }
 
   private inspectData(data) {

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(value.email, value.password)
           .subscribe(
             success => {
-              console.log("User is logged in");
+              console.log('User is logged in');
               this.router.navigateByUrl('/');
             },
             error => {
@@ -56,6 +56,10 @@ export class LoginComponent implements OnInit {
           );
         }
       }
+    }
+
+    public logout() {
+        this.authService.logout();
     }
 
     ngOnInit() { }
