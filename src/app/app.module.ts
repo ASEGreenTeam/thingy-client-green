@@ -12,10 +12,14 @@ import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { RoutesModule } from './routes/routes.module';
+import { ThingySettingsComponent } from './routes/thingy-settings/thingy-settings.component';
+import { PicturesComponent } from './routes/pictures/pictures.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ThingySettingsComponent,
+    PicturesComponent
   ],
   imports: [
     FormsModule,

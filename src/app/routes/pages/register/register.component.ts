@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit {
       private router: Router,
       fb: FormBuilder) {
 
-        let password = new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9]{6,10}$')]));
-        let certainPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password)]);
+        const password = new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9]{6,10}$')]));
+        const certainPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password)]);
 
         this.passwordForm = fb.group({
             'password': password,
@@ -39,15 +39,15 @@ export class RegisterComponent implements OnInit {
     submitForm($ev, value: any) {
         console.log('Entry submit');
         $ev.preventDefault();
-        for (let c in this.valForm.controls) {
+        for (const c of Object.keys(this.valForm.controls)) {
             this.valForm.controls[c].markAsTouched();
         }
-        for (let c in this.passwordForm.controls) {
+        for (const c of Object.keys(this.passwordForm.controls)) {
             this.passwordForm.controls[c].markAsTouched();
         }
 
         if (this.valForm.valid) {
-          let user = new User().deserialize({
+          const user = new User().deserialize({
             email: value.email,
             username: value.email,
             password: value.passwordGroup.password

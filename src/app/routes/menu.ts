@@ -18,6 +18,12 @@ const Logs = {
 };
 
 
+const Gallery = {
+    text: 'Gallery',
+    link: '/pictures',
+    icon: 'icon-picture'
+};
+
 const headingMain = {
     text: 'Main Navigation',
     heading: true
@@ -37,6 +43,7 @@ export const menu = [
     headingMain,
     Home,
     Logs,
+    Gallery,
     headingComponents,
     headingMore
 ];
