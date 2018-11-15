@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+			"./node_modules/ngx-lightbox/lightbox.css",
               "src/app/core/preloader/preloader.scss",
               "src/styles.scss"
             ],

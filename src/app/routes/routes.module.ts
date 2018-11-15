@@ -6,12 +6,14 @@ import { PagesModule } from './pages/pages.module';
 
 import { menu } from './menu';
 import { routes } from './routes';
+import {LightboxModule} from 'ngx-lightbox';
 
 @NgModule({
     imports: [
         SharedModule,
         RouterModule.forRoot(routes),
-        PagesModule
+        PagesModule,
+        LightboxModule
     ],
     declarations: [],
     exports: [

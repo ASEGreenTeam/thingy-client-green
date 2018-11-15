@@ -15,6 +15,7 @@ import { RoutesModule } from './routes/routes.module';
 import { ThingySettingsComponent } from './routes/thingy-settings/thingy-settings.component';
 import { PicturesComponent } from './routes/pictures/pictures.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
