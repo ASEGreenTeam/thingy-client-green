@@ -24,6 +24,12 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+  changedPassword(user: User): Observable<Boolean> {
+        return this.http.post<any>(endpoint + 'changepw', user, httpOptions).pipe(
+            map(this.inspectData),
+            catchError(this.handleError)
+        );
+    }
 
   private inspectData(data) {
     console.log(data);

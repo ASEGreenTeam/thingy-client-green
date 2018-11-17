@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
 import { PicturesComponent } from './pictures/pictures.component';
+import {ChangepwComponent} from './pages/changepw/changepw.component';
 
 export const routes = [
 
@@ -15,7 +16,8 @@ export const routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'logs', loadChildren: './logs/logs.module#LogsModule' },
-            { path: 'pictures', component: PicturesComponent }
+            { path: 'pictures', component: PicturesComponent },
+            { path: 'changepw', component: ChangepwComponent }
         ],
         canActivate: [AuthGuard]
     },

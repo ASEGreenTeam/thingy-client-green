@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class UserblockComponent implements OnInit {
     user: any;
-    constructor(public userblockService: UserblockService, public authService: AuthService) {
+    constructor(public userblockService: UserblockService, public authService: AuthService, private router: Router) {
 
         this.user = {
             picture: 'assets/img/user/01.jpg'
@@ -28,6 +28,10 @@ export class UserblockComponent implements OnInit {
     public userLogout(): void {
         this.authService.logout();
         location.reload();
+    }
+
+    public routeChangePw(): void {
+        this.router.navigate(['/changepw']);
     }
 
 }

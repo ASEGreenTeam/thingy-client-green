@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit {
     }
 
     submitForm($ev, value: any) {
-        console.log('Entry submit');
         $ev.preventDefault();
         for (const c of Object.keys(this.valForm.controls)) {
             this.valForm.controls[c].markAsTouched();
@@ -55,7 +54,7 @@ export class RegisterComponent implements OnInit {
           this.userService.registerUser(user)
             .subscribe(
               success => {
-                console.log('User registere!');
+                console.log('User registered!');
                 this.router.navigateByUrl('/login');
               },
               error => {

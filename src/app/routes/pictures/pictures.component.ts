@@ -10,7 +10,11 @@ import {Lightbox} from 'ngx-lightbox';
 export class PicturesComponent implements OnInit {
    _album: any[] = [];
 
+
+
   constructor(private _lightbox: Lightbox) {
+      const path: String = 'assets/img/';
+        // need a rest function that gives path of pictures
       for (let i = 0; i <= 4; i++) {
           const src = 'assets/img/bg' + i + '.jpg';
           const caption = 'Image ' + i + ' caption here';
@@ -29,6 +33,7 @@ export class PicturesComponent implements OnInit {
         // open lightbox
         this._lightbox.open(this._album, index);
     }
+
 
     close(): void {
         // close lightbox programmatically

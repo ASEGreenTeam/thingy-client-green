@@ -14,13 +14,15 @@ import { SharedModule } from './shared/shared.module';
 import { RoutesModule } from './routes/routes.module';
 import { ThingySettingsComponent } from './routes/thingy-settings/thingy-settings.component';
 import { PicturesComponent } from './routes/pictures/pictures.component';
+import { ChangepwComponent } from './routes/pages/changepw/changepw.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ThingySettingsComponent,
-    PicturesComponent
+    PicturesComponent,
+    ChangepwComponent
   ],
   imports: [
     FormsModule,
