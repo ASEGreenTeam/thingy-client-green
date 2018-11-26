@@ -9,10 +9,12 @@
    <th>ID</th>
    <th>Time</th>
    <th>Direction</th>
+   <th>Image</th>
  </tr>
  <tr *ngFor="let log of logs;">
    <td>{{log.id}}</td>
    <td>{{log.createdAt}}</td>
    <td>{{log.direction}}</td>
+   <td>{{log.imagePath}}</td>
  </tr>
 </table>
