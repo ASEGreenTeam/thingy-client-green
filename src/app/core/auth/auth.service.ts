@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  login(email:string, password:string ): Observable<any> {
+  login(email: string, password: string ): Observable<any> {
       const data = {'username': email, 'password': password};
       const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
       return this.http.post<any>(endpoint + 'login', data, config).pipe(
@@ -21,24 +21,33 @@ export class AuthService {
       );
   }
 
+    changePassword(id: string, oldpassword: string, password: string ): Observable<any> {
+        const data = {'id': id, 'oldpassword': oldpassword, 'password': password};
+        const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+        return this.http.post<any>(endpoint + 'changePW', data, config);
+    }
   private handleError(error: HttpErrorResponse) {
     // return an observable with a user-facing error message
     return throwError(
       'Login failed!');
-  };
+  }
 
   private setSession(authResult) {
-    console.log(authResult);
+    console.log(authResult.token);
     localStorage.setItem('token', authResult.token);
-    return true
+    localStorage.setItem('id', authResult._id);
+    return true;
   }
 
   getToken() {
     return localStorage.getItem('token');
   }
+  getId() {
+        return localStorage.getItem('id');
+    }
 
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
   }
 
   public isLoggedIn() {

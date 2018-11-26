@@ -7,7 +7,7 @@
         <form [formGroup]="passForm" class="form-validate mb-3" role="form" name="changepwForm" novalidate="" (submit)="submitForm($event, passForm.value)">
           <div class="form-group">
             <label>Old password</label>
-            <input class="form-control" type="password" placeholder="Password" />
+            <input class="form-control" type="password" name="oldpassword" placeholder="Password" formControlName="oldpassword" />
           </div>
           <div formGroupName="passwordGroup">
             <div class="form-group">
@@ -18,9 +18,11 @@
             </div>
             <div class="form-group">
               <label>Confirm new password</label>
+              <div class="input-group with-focus">
               <input class="form-control" type="password" name="confirmpassword" placeholder="Password" formControlName="confirmpassword" [formControl]="passForm.get('confirmpassword')" />
-              <div class="text-danger" *ngIf="passForm.get('confirmPassword').hasError('required') && (passForm.get('confirmPassword').dirty || passForm.get('confirmPassword').touched)">This field is required</div>
-              <div class="text-danger" *ngIf="passForm.get('confirmPassword').hasError('equalTo')">Password does Not match</div>
+              </div>
+                <div class="text-danger" *ngIf="passForm.get('confirmpassword').hasError('required') && (passForm.get('confirmpassword').dirty || passForm.get('confirmpassword').touched)">This field is required</div>
+              <div class="text-danger" *ngIf="passForm.get('confirmpassword').hasError('equalTo')">Password does Not match</div>
             </div>
           </div>
           <button class="btn btn-sm btn-secondary" type="submit">Save</button>
