@@ -15,6 +15,7 @@ import { RoutesModule } from './routes/routes.module';
 import { ThingySettingsComponent } from './routes/thingy-settings/thingy-settings.component';
 import { PicturesComponent } from './routes/pictures/pictures.component';
 import { ChangepwComponent } from './routes/pages/changepw/changepw.component';
+import { HomeComponent } from './routes/home/home.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ChangepwComponent } from './routes/pages/changepw/changepw.component';
     AppComponent,
     ThingySettingsComponent,
     PicturesComponent,
-    ChangepwComponent
+    ChangepwComponent,
+    HomeComponent
   ],
   imports: [
     FormsModule,

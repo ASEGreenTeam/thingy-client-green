@@ -8,6 +8,7 @@ import { Error500Component } from './pages/error500/error500.component';
 import { PicturesComponent } from './pictures/pictures.component';
 import { ThingySettingsComponent } from './thingy-settings/thingy-settings.component';
 import { ChangepwComponent } from './pages/changepw/changepw.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes = [
 
@@ -19,7 +20,8 @@ export const routes = [
             { path: 'logs', loadChildren: './logs/logs.module#LogsModule' },
             { path: 'pictures', component: PicturesComponent },
             { path: 'settings', component: ThingySettingsComponent },
-            { path: 'changepw', component: ChangepwComponent }
+            { path: 'changepw', component: ChangepwComponent },
+            { path: 'home', component: HomeComponent }
         ],
         canActivate: [AuthGuard]
     },

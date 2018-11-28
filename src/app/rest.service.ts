@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError, tap, retry } from 'rxjs/operators';
 import { Log } from './shared/models/log.model';
+import { User } from './shared/models/user.model';
 
 const endpoint = 'http://localhost:3000/';
 const httpOptions = {
@@ -26,13 +27,13 @@ export class RestService {
     );
   }
 
+  clearLogs(): Observable<any> {
+    return this.http.delete(endpoint + 'logs').pipe();
+  }
+
   private inspectData(data) {
     console.log(data);
     return data;
-  }
-
-  clearLogs(): Observable<any> {
-    return this.http.delete(endpoint + 'logs').pipe();
   }
 
   private handleError(error: HttpErrorResponse) {

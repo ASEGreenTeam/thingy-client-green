@@ -43,6 +43,7 @@
     "ngx-infinite-scroll": "0.8.4",
     "ngx-lightbox": "^1.1.0",
     "ngx-select-ex": "3.5.9",
+    "ngx-toggle-switch": "^2.0.5",
     "os": "^0.1.1",
     "rxjs": "^6.0.0",
     "rxjs-compat": "6.1.0",

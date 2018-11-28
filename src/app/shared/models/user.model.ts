@@ -5,6 +5,9 @@ export class User {
   email: string;
   username: string;
   password: string;
+  thingyUuid: string;
+  alarm: boolean;
+  imagesCapture: boolean;
   url: string;
 
   deserialize(input: any): this {

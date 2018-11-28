@@ -1,0 +1,40 @@
+<h1>Thingy Security</h1>
+
+<div>
+  <a href="javascript:void(0)" (click)="registerThingy()">
+    <button>Register Thingy</button>
+  </a>
+  <div>
+    {{ registerThingyMessage }}
+  </div>
+</div>
+
+<div>
+  Activate alarm:
+  <a href="javascript:void(0)" (click)="changeAlarm()">
+    <label class="switch">
+      <input type="checkbox" [checked]="user.alarm">
+      <span class="slider round"></span>
+    </label>
+  </a>
+</div>
+
+<div>
+  Activate email alert:
+  <a href="javascript:void(0)" (click)="changeEmailAlert()">
+    <label class="switch">
+      <input type="checkbox" [checked]="user.emailAlert">
+      <span class="slider round"></span>
+    </label>
+  </a>
+</div>
+
+<div>
+  Activate images capture:
+  <a href="javascript:void(0)" (click)="changeImagesCapture()">
+    <label class="switch">
+      <input type="checkbox" [checked]="user.imagesCapture">
+      <span class="slider round"></span>
+    </label>
+  </a>
+</div>
