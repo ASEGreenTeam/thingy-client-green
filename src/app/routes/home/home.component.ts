@@ -26,15 +26,21 @@ export class HomeComponent implements OnInit {
   }
 
   registerThingy() {
+    this.userService.updateUser(
+      this.user.id,
+      { thingyUuid: '' }
+    ).subscribe();
     this.userService.registerThingy().subscribe();
     this.registerThingyMessage = "Please, press the button on your Thingy 5 times...";
     this.timeout = setTimeout(() => {
-      this.getUser();
-      if (!this.user.thingyId) {
-        this.registerThingyMessage = "Failed. Please try again.";
-      } else {
-        this.registerThingyMessage = "Thingy registered: " + this.user.thingyId;
-      }
+      this.userService.getUser(this.user.id).subscribe((data: {}) => {
+        this.user = data;
+        if (!this.user.thingyId) {
+          this.registerThingyMessage = "Failed. Please try again.";
+        } else {
+          this.registerThingyMessage = "Thingy registered: " + this.user.thingyId;
+        }
+      });
     }, 10000);
     this.timeout.start();
   }
