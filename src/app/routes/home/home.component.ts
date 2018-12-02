@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared/services/user.service';
 import { AuthService } from '../../core/auth/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-home',
@@ -12,11 +14,15 @@ export class HomeComponent implements OnInit {
   user: any;
   registerThingyMessage: String;
   timeout: any;
+  delayForm: FormGroup
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.getUser();
+    this.delayForm = this.fb.group({
+      'alarmDelay' : [null, Validators.required]
+    });
   }
 
   getUser() {
@@ -70,6 +76,23 @@ export class HomeComponent implements OnInit {
     ).subscribe((data: {}) => {
       this.user = data;
     })
+  }
+
+  submitDelayForm($ev, value: any) {
+    $ev.preventDefault();
+    for (let c in this.delayForm.controls) {
+        this.delayForm.controls[c].markAsTouched();
+    }
+    if (this.delayForm.valid) {
+      if (value.alarmDelay) {
+        this.userService.updateUser(
+          this.user.id,
+          { alarmDelay: value.alarmDelay }
+        ).subscribe((data: {}) => {
+          this.user = data;
+        });
+      }
+    }
   }
 
 }

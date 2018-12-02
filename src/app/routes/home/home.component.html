@@ -20,6 +20,17 @@
 </div>
 
 <div>
+  Time before alarm activation: {{ user.alarmDelay }} seconds
+  <form [formGroup]="delayForm" role="form" name="dForm" novalidate="" (submit)="submitDelayForm($event, delayForm.value)">
+      <div>
+        <input id="exampleInputEmail1" type="number" name="alarmDelay" placeholder="Enter delay" autocomplete="off" formControlName="alarmDelay" required="" />
+          <div class="text-danger" *ngIf="delayForm.controls['alarmDelay'].hasError('required') && (delayForm.controls['alarmDelay'].dirty)">This field is a number</div>
+        <button type="submit" [disabled]="!delayForm.valid">Change</button>
+      </div>
+  </form>
+</div>
+
+<div>
   Activate email alert:
   <a href="javascript:void(0)" (click)="changeEmailAlert()">
     <label class="switch">
