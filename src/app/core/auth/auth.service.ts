@@ -3,8 +3,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { throwError } from 'rxjs';
 import { Observable, pipe} from 'rxjs/Rx';
 import { map, catchError, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
-const endpoint = 'http://localhost:3000/';
+const endpoint = environment.apiServer;
 
 @Injectable()
 export class AuthService {

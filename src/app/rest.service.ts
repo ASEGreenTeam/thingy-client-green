@@ -4,8 +4,9 @@ import { Observable, of, throwError } from 'rxjs';
 import { map, catchError, tap, retry } from 'rxjs/operators';
 import { Log } from './shared/models/log.model';
 import { User } from './shared/models/user.model';
+import { environment } from '../environments/environment';
 
-const endpoint = 'http://localhost:3000/';
+const endpoint = environment.apiServer;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -16,6 +17,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RestService {
+
+
 
   constructor(private http: HttpClient) { }
 
