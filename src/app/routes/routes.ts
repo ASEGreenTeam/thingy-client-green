@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
 import { PicturesComponent } from './pictures/pictures.component';
+import { OverviewComponent } from './overview/overview.component';
 import { ThingySettingsComponent } from './thingy-settings/thingy-settings.component';
 import { ChangepwComponent } from './pages/changepw/changepw.component';
 import { HomeComponent } from './home/home.component';
@@ -21,7 +22,8 @@ export const routes = [
             { path: 'pictures', component: PicturesComponent },
             { path: 'settings', component: ThingySettingsComponent },
             { path: 'changepw', component: ChangepwComponent },
-            { path: 'home', component: HomeComponent }
+            { path: 'home', component: HomeComponent },
+            { path: 'overview', component: OverviewComponent }
         ],
         canActivate: [AuthGuard]
     },

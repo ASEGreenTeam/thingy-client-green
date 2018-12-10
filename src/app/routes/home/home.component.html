@@ -1,51 +1,74 @@
-<h1>Thingy Security</h1>
-
-<div>
-  <a href="javascript:void(0)" (click)="registerThingy()">
-    <button>Register Thingy</button>
-  </a>
+<div class="content-heading">
   <div>
-    {{ registerThingyMessage }}
+    Thingy Security Settings
+    <small>Settings to configure the thingy according to your needs!</small>
   </div>
 </div>
 
-<div>
-  Activate alarm:
-  <a href="javascript:void(0)" (click)="changeAlarm()">
-    <label class="switch">
-      <input type="checkbox" [checked]="user.alarm">
-      <span class="slider round"></span>
-    </label>
-  </a>
-</div>
+<div class="card card-default">
+  <div class="card-body">
+    <div class="form-group row">
+      <div class="col-lg-4 col-md-10">
+        <div>
+          <a href="javascript:void(0)" (click)="registerThingy()">
+            <button class="mb-1 mr-1 btn btn-info" >Register Thingy</button>
+          </a>
+          <div>
+            {{ registerThingyMessage }}
+          </div>
+        </div>
+        <div class="d-flex align-items-center mb-3">
+          <div>Activate alarm:</div>
+          <div class="ml-auto">
+            <a href="javascript:void(0)"  (click)="changeAlarm()">
+              <label class="switch">
+                <input type="checkbox"  [checked]="user.alarm">
+                <span class="slider round"></span>
+              </label>
+            </a>
+          </div>
+        </div>
 
-<div>
-  Time before alarm activation: {{ user.alarmDelay }} seconds
-  <form [formGroup]="delayForm" role="form" name="dForm" novalidate="" (submit)="submitDelayForm($event, delayForm.value)">
-      <div>
-        <input id="exampleInputEmail1" type="number" name="alarmDelay" placeholder="Enter delay" autocomplete="off" formControlName="alarmDelay" required="" />
-          <div class="text-danger" *ngIf="delayForm.controls['alarmDelay'].hasError('required') && (delayForm.controls['alarmDelay'].dirty)">This field is a number</div>
-        <button type="submit" [disabled]="!delayForm.valid">Change</button>
+
+
+        <div class="d-flex align-items-center mb-3">
+          <div>Activate email alert:</div>
+          <div class="ml-auto">
+          <a href="javascript:void(0)" (click)="changeEmailAlert()">
+            <label class="switch">
+              <input type="checkbox" [checked]="user.emailAlert">
+              <span class="slider round"></span>
+            </label>
+          </a>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+          <div> Activate images capture: </div>
+          <div class="ml-auto">
+          <a href="javascript:void(0)" (click)="changeImagesCapture()">
+            <label class="switch">
+              <input type="checkbox" [checked]="user.imagesCapture">
+              <span class="slider round"></span>
+            </label>
+          </a>
+          </div>
+        </div>
+        <form [formGroup]="delayForm" role="form" name="dForm" novalidate="" (submit)="submitDelayForm($event, delayForm.value)">
+        <div class="d-flex align-items-center mb-3">
+          Time before alarm activation:
+            <div class="ml-auto">
+              <input id="exampleInputEmail1" style="text-align: right;" type="number" name="alarmDelay" value="{{ user.alarmDelay }}" autocomplete="off" formControlName="alarmDelay" required="" />
+              <div class="text-danger" *ngIf="delayForm.controls['alarmDelay'].hasError('required') && (delayForm.controls['alarmDelay'].dirty)">This field is a number</div>
+            </div>
+
+
+
+        </div>
+          <button class="mb-1 mr-1 btn btn-info" type="submit" [disabled]="!delayForm.valid">Change</button>
+        </form>
       </div>
-  </form>
-</div>
 
-<div>
-  Activate email alert:
-  <a href="javascript:void(0)" (click)="changeEmailAlert()">
-    <label class="switch">
-      <input type="checkbox" [checked]="user.emailAlert">
-      <span class="slider round"></span>
-    </label>
-  </a>
-</div>
-
-<div>
-  Activate images capture:
-  <a href="javascript:void(0)" (click)="changeImagesCapture()">
-    <label class="switch">
-      <input type="checkbox" [checked]="user.imagesCapture">
-      <span class="slider round"></span>
-    </label>
-  </a>
+    </div>
+  </div>
 </div>

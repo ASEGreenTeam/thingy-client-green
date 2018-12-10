@@ -1,20 +1,26 @@
-<a href="javascript:void(0)" (click)="clearLogs()">
-  <button>Clear logs from database</button>
-</a>
-
 <h1>Log List</h1>
 
-<table>
- <tr>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
    <th>ID</th>
-   <th>Time</th>
+   <th>Date</th>
    <th>Direction</th>
-   <th>Image</th>
+            <!--<th>Image</th>-->
  </tr>
+        </thead>
+        <tbody>
  <tr *ngFor="let log of logs;">
    <td>{{log.id}}</td>
    <td>{{log.createdAt}}</td>
-   <td>{{log.direction}}</td>
-   <td>{{log.imagePath}}</td>
- </tr>
-</table>
+
+     <td *ngIf="log.direction == 'is_closing'"> {{'Closed'}}</td>
+     <td *ngIf="log.direction == 'is_opening'"> {{'Opened'}}</td>
+     <!-- <td>{{log.imagePath}}</td>-->
+    </tr>
+           </tbody>
+   </table>
+       <a href="javascript:void(0)" (click)="clearLogs()">
+           <button class="mb-1 mr-1 btn btn-info" style="float: right;">Clear logs from database</button>
+       </a>

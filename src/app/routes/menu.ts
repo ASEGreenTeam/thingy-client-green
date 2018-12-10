@@ -24,6 +24,12 @@ const Gallery = {
     icon: 'icon-picture'
 };
 
+const Overview = {
+    text: 'Overview',
+    link: '/overview',
+    icon: 'icon-compass'
+};
+
 const headingMain = {
     text: 'Main Navigation',
     heading: true
@@ -44,6 +50,7 @@ export const menu = [
     Home,
     Logs,
     Gallery,
+    Overview,
     headingComponents,
     headingMore
 ];

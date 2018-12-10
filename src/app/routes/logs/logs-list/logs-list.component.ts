@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {LogService} from '../../../shared/services/logs.service';
 
 @Component({
   selector: 'app-logs-list',
@@ -9,10 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LogsListComponent implements OnInit {
 
-  logs: any;
+  public logs: any;
   interval: any;
 
-  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private logserv: LogService) {
+      this.rest.getLogs().subscribe((data: {}) => {
+          this.logserv.myMethod(data);
+      });
+  }
 
   ngOnInit() {
     this.getLogs();
