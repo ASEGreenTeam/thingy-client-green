@@ -69,6 +69,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  changeTelegramAlert() {
+    this.userService.updateUser(
+      this.user.id,
+      { telegramAlert: !this.user.telegramAlert }
+    ).subscribe((data: {}) => {
+      this.user = data;
+    })
+  }
+
   changeImagesCapture() {
     this.userService.updateUser(
       this.user.id,
