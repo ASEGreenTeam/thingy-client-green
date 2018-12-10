@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Lightbox} from 'ngx-lightbox';
 import { RestService } from '../../rest.service';
 import { Log } from '../../shared/models/log.model';
+import { environment } from '../../../environments/environment';
+
+const endpoint = environment.apiServer;
 
 
 @Component({
@@ -33,7 +36,7 @@ export class PicturesComponent implements OnInit {
   }
 
   setupGallery() {
-    const path: String = 'http://localhost:3000/';
+    const path: String = endpoint;
     // need a rest function that gives path of pictures
     console.log(this.images);
     for (let key in this.images) {
