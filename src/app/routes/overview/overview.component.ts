@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {LogService} from '../../shared/services/logs.service';
 import {RestService} from '../../rest.service';
 import {UserService} from '../../shared/services/user.service';
+import {Log} from '../../shared/models/log.model';
+import {environment} from '../../../environments/environment';
+
+const endpoint = environment.apiServer;
 
 @Component({
     selector: 'app-overview',
@@ -13,10 +17,9 @@ export class OverviewComponent implements OnInit {
     public slides: Array<any> = [];
     public logs: any;
     user: any;
+    images: any[] = [];
     constructor( private logserv: LogService, public rest: RestService, public userService: UserService) {
-        this.addSlide(4);
-        this.addSlide(7);
-        this.addSlide(8);
+
     }
 
     ngOnInit() {
@@ -24,6 +27,29 @@ export class OverviewComponent implements OnInit {
         this.rest.getLogs().subscribe((data: {}) => {
             this.logs = data;
         });
+        this.rest.getLogs().subscribe((data: Log[]) => {
+            for (let log of data) {
+                console.log(log.imagePath);
+                if (log.imagePath) {
+                    this.images.push({ imagePath: log.imagePath, timestamp: log.timestamp });
+                }
+            };
+            this.setupGallery();
+        });
+    }
+
+    setupGallery() {
+        const path: String = endpoint;
+        // need a rest function that gives path of pictures
+        console.log(this.images);
+        for (let key in this.images) {
+            let img = this.images[key];
+            console.log(img);
+            const src = `${path}${img.imagePath}`;
+            this.slides.push({
+                image: src
+            });
+        }
     }
 
     public addSlide(id = 8): void {
